@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Sum from './components/Sum/Sum';
+import Box from './components/Box/Box';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
         {/*<Sum/>
         <Sum/>
         <Sum/>*/}
+        <Box/>
       </div>
     );
   }
