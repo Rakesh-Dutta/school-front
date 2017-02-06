@@ -42,6 +42,8 @@ describe('List component ', () => {
         const wrapper = mount(<List header="Students" items={Students}/>);
         expect(wrapper.find(Box).length).to.equal(3); 
         expect(wrapper.find(Box).at(1).find('div > div').html()).to.equal('<div data-id="4" class="empty">sam</div>');  
+        var item = wrapper.find(Box).at(1);
+        expect(item.props().id).to.equal(4);
     });
 
     it('should call function when 2nd box is clicked', () => {
