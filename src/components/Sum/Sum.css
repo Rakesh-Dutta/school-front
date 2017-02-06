@@ -3,11 +3,15 @@
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    color: blue;
+    color: black;
 }
 
 .sum input{
     background-color: yellow;
+}
+
+.sum .a{
+    background-color: burlywood;
 }
 
 .sum button{
