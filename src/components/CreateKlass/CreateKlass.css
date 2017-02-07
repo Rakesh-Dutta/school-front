@@ -1,12 +1,12 @@
 .create-klass{
-  background-color: gray;
+  background-color: grey;
   border-radius: 10px;
   border: 2px solid #f39c12;
   padding: 10px;
 }
 
 .create-klass .error{
-  background-color: skyblue;
+  background-color: #c0392b;
   color: white;
   padding: 5px;
   margin-bottom: 10px;
