@@ -1,28 +1,49 @@
 import React from 'react';
-import './CreateStudent.css'
+import './CreateStudent.css';
+import axios from 'axios';
 
 export default class CreateStudent extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={error: ""};
-        this.create = this.create.bind(this);
+  constructor(props){
+    super(props);
+    this.state = {};
+    this.create = this.create.bind(this);
+  }
+
+  create(e){
+    e.preventDefault();   
+    this.setState({error: null});
+    const email = this.email.value;
+    if(email.length < 7)
+    {
+        this.setState({error: 'Email is too short'});
+        return;
     }
 
-    create(){
-        console.log('*** Create Clicked ***');
-    }
- 
-    render(){
-        return (
-            <div className="create-student">
-            <h1>Create Student</h1>
-            <div>{this.state.error}</div>
-                <form>
-                    <label>Email Address</label>
-                    <input ref={n => this.email = n} type="email"/>
-                    <button onClick={this.create}>Create</button>
-                </form>
-            </div>
-        );
-    }
-};
+    const url = this.props.host + '/students';
+    const payload = {email};
+    axios.post(url, payload) 
+        .then(rsp  => {
+            const student = rsp.data;
+            this.props.created(student);
+            this.email.value = '';
+        })
+        .catch(e => e);
+  }
+
+  render(){
+    return (
+      <div className="create-student">
+        <h3>Create Student</h3>
+        <div className={this.state.error ? "error" : ""}>{this.state.error}</div>
+        <form>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input placeholder="student@allstate.com" className="form-control" ref={n => this.email = n} type="email" />
+          </div>
+          <button className="btn btn-danger btn-small" onClick={this.create}>Create</button>
+        </form>
+      </div>
+    );
+  }
+}
+
