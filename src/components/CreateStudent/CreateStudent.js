@@ -13,8 +13,7 @@ export default class CreateStudent extends React.Component{
     e.preventDefault();   
     this.setState({error: null});
     const email = this.email.value;
-    if(email.length < 7)
-    {
+    if(email.length < 7) {
         this.setState({error: 'Email is too short'});
         return;
     }
