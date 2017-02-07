@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="app">
         <h1>Class Front</h1>
-        <CreateStudent/>
+        <CreateStudent host="http://localhost:9000"/>
         {/*<Sum/>
         <Sum/>
         <Sum/>

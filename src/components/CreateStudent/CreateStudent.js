@@ -21,13 +21,16 @@ export default class CreateStudent extends React.Component{
 
     const url = this.props.host + '/students';
     const payload = {email};
+
     axios.post(url, payload) 
         .then(rsp  => {
             const student = rsp.data;
             this.props.created(student);
             this.email.value = '';
         })
-        .catch(e => e);
+        .catch(e => {
+            this.setState({error: e.message})
+        });
   }
 
   render(){
